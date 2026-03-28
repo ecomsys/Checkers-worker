@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Игнорируем реальные файлы и папки
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Игнорируем статические ассеты Vite
+RewriteCond %{REQUEST_URI} !^/games/checkers/assets/
+RewriteCond %{REQUEST_URI} !^/games/checkers/static/
+
+# Всё остальное → index.html (SPA fallback)
+RewriteRule ^ /games/checkers/index.html [L]
